@@ -48,9 +48,10 @@ String ans="";
         }
     }
     Collections.sort(st);
-for(String s:st){
-    ans+=s+" ";
+for(int i=0;i<st.size()-1;i++){
+    ans+=st.get(i)+" ";
 }
+ans+=st.get(st.size()-1);
 return ans;
 }
 
@@ -80,12 +81,15 @@ public int getBookings(Integer ad){
 
 public Hotel UpdateFaciltys(List<Facility> f,String HotelName){
     List<Facility> old=repo.HDB.get(HotelName).getFacilities();
-    for(Facility o:old){
-        for(Facility n:f){
-            if(o.equals(n)){
+
+    for(int i=0;i<f.size();i++){
+        Facility temp=f.get(i);
+        for(int j=0;j<old.size();j++){
+            Facility T=old.get(j);
+            if(temp.equals(T)){
                 break;
             }
-            old.add(n);
+            old.add(temp);
         }
 
     }
