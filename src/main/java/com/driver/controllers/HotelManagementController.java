@@ -36,10 +36,7 @@ private services ser;
         return ser.addHotel(hotel);
     }
 
-    @GetMapping("/test")
-    public String test(){
-        return "succses";
-    }
+
 
     @PostMapping("/add-user")
     public Integer addUser(@RequestBody User user){
