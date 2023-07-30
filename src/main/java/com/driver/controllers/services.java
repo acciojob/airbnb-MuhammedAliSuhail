@@ -13,8 +13,8 @@ import java.util.List;
 
 @Service
 public class services {
-    @Autowired
-    private repository repo;
+
+    private repository repo=new repository();
 public String addHotel(Hotel h){
     for(String s:repo.HDB.keySet()){
         if(repo.HDB.get(s).getHotelName().equals(h.getHotelName())){
