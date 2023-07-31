@@ -82,19 +82,28 @@ public int getBookings(Integer ad){
 public Hotel UpdateFaciltys(List<Facility> f,String HotelName){
     List<Facility> old=repo.HDB.get(HotelName).getFacilities();
 
-    for(int i=0;i<f.size();i++){
-        Facility temp=f.get(i);
-        String t=temp.toString();
-        for(int j=0;j<old.size();j++){
-            String T=old.get(j).toString();
-            if(t.equals(T)){
+    for (int i = 0; i < f.size(); i++) {
+        Facility temp = f.get(i);
+        String t = temp.toString();
+        boolean facilityExists = false;
+
+        for (int j = 0; j < old.size(); j++) {
+            String T = old.get(j).toString();
+            if (t.equals(T)) {
+                facilityExists = true;
+                // Update the existing facility with new information (if applicable).
+                old.set(j, temp);
                 break;
             }
-            old.add(temp);
         }
 
+        // If the facility doesn't exist, add it to the list.
+        if (!facilityExists) {
+            old.add(temp);
+        }
     }
-    repo.HDB.get(HotelName).setFacilities(old);
+  repo.HDB.get(HotelName).setFacilities(old);
+
     return repo.HDB.get(HotelName);
 }
 }
