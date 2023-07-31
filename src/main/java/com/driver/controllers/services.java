@@ -84,9 +84,10 @@ public Hotel UpdateFaciltys(List<Facility> f,String HotelName){
 
     for(int i=0;i<f.size();i++){
         Facility temp=f.get(i);
+        String t=temp.name().toString();
         for(int j=0;j<old.size();j++){
-            Facility T=old.get(j);
-            if(temp.equals(T)){
+            String T=old.get(j).name().toString();
+            if(t.equals(T)){
                 break;
             }
             old.add(temp);
